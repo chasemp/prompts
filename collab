@@ -1,0 +1,6 @@
+## Text Formatting Requirements
+
+- **ALWAYS wrap at 120 characters maximum**: When showing diffs, proposed changes, current/new text comparisons, or any code examples, ensure all lines are wrapped at 120 characters or less
+- **Use consistent line breaking**: Break lines at natural points (spaces, punctuation) when possible
+- **Maintain readability**: Ensure wrapped content remains easy to read and understand
+- **Apply to all text presentations**: This applies to search_replace previews, proposed changes, current vs proposed text, diffs, and any code examples shown to the user
