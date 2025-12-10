@@ -1,6 +1,97 @@
+## Narrative/copy Writing Guidelines
+
+### Language Standards
+- Use objective, professional language in all reports
+- Avoid inflammatory descriptors like "awful", "terrible", "emergency", "crisis", "disaster"
+- Avoid inflammatory terms like "viral copyleft" (use "strong copyleft" instead)
+- Use measured risk terminology: Low, Moderate, High, Critical
+- Avoid emojis in professional documentation (exception: checkmarks in success criteria lists are acceptable)
+- Use factual, evidence-based descriptions of security issues
+- Frame challenges as opportunities for improvement rather than failures
+
+
+## Markdown Formatting Rules
+
+### Bold Headers with Lists
+When using bold text as a section header followed by a bulleted list, ALWAYS include a blank line between the bold header and the list for proper Markdown rendering.
+
+**Correct Format:**
+```markdown
+**Section Header:**
+
+- First bullet point
+- Second bullet point
+```
+
+**Incorrect Format:**
+```markdown
+**Section Header:**
+- First bullet point
+- Second bullet point
+```
+
 ## Text Formatting Requirements
 
 - **ALWAYS wrap at 120 characters maximum**: When showing diffs, proposed changes, current/new text comparisons, or any code examples, ensure all lines are wrapped at 120 characters or less
 - **Use consistent line breaking**: Break lines at natural points (spaces, punctuation) when possible
 - **Maintain readability**: Ensure wrapped content remains easy to read and understand
 - **Apply to all text presentations**: This applies to search_replace previews, proposed changes, current vs proposed text, diffs, and any code examples shown to the user
+
+## YAML Syntax Validation
+
+**MANDATORY**: When editing YAML files or embedded YAML content (e.g., in HTML files), always validate YAML syntax after making changes.
+
+### Validation Requirements:
+- After editing YAML files, run `python3 -c "import yaml; yaml.safe_load(open('path/to/file.yaml'))"` to validate syntax
+- For embedded YAML in HTML files, extract and validate the YAML content
+- Fix any YAML syntax errors immediately before proceeding with other changes
+- Common YAML errors to watch for:
+  - Incorrect indentation (must use consistent spaces, typically 2 spaces)
+  - Missing colons after keys
+  - Unquoted strings with special characters
+  - Duplicate keys in the same scope
+  - Incorrect list formatting
+  - Unclosed quotes or brackets
+
+## Shell Command Guidelines
+
+### Command Structure
+- Keep shell commands simple and single-purpose
+- Avoid complex multi-line echo statements in single commands
+- Use separate commands for separate actions
+- Prefer simple output over complex formatting
+
+### Avoid These Patterns
+```bash
+# DON'T: Complex multi-line echo in single command
+echo "line1" && echo "line2" && echo "line3"
+
+# DON'T: Long commands with multiple echo statements
+python3 tool.py && echo "result:" && echo "details..."
+```
+
+### Use These Patterns Instead
+```bash
+# DO: Simple, focused commands
+echo "Starting process..."
+python3 tool.py
+echo "Process complete"
+
+# DO: Break complex output into separate commands
+echo "Step 1: Initialize"
+echo "Step 2: Execute"
+echo "Step 3: Complete"
+
+
+### File Operations
+- Read files before editing when possible
+- Use search_replace for targeted changes
+- Prefer MultiEdit for multiple changes to same file
+- Always check file exists before operations
+
+## Code Quality
+- Keep functions focused and single-purpose
+- Use clear variable names
+- Add proper error handling
+- Include helpful logging messages
+- Avoid complex nested operations  
